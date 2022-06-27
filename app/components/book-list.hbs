@@ -1,7 +1,13 @@
 <ul>
-  {{#each @books as |book| }}
+  {{#each @books.lastSuccessful.value as |book| }}
     <li data-test-id={{book.id}}>{{book.name}}</li>
   {{else}}
-    <li>Nothing to see here</li>
+    {{#if @books.isRunning}}
+      <div class="loading"></div>
+    {{else if @books.lastErrored}}
+      <div class="error"></div>
+    {{else}}
+      <li>Nothing to see here</li>
+    {{/if}}
   {{/each}}
 </ul>
