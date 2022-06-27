@@ -1,5 +1,7 @@
 <ul>
   {{#each @books as |book| }}
     <li data-test-id={{book.id}}>{{book.name}}</li>
+  {{else}}
+    <li>Nothing to see here</li>
   {{/each}}
 </ul>
