@@ -39,6 +39,8 @@ module('Integration | Component | book-list', function (hooks) {
     let resolver;
 
     this.books = fakeTask(() => {
+      // Return a Promise with a handle to the resolve function
+      // so we can manually call it later.
       return new Promise((resolve) => {
         resolver = resolve;
       });
