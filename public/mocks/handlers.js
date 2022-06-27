@@ -3,7 +3,7 @@ import { rest } from 'msw';
 class Book {
   constructor(id, name) {
     this.name = name;
-    this.id = id
+    this.id = id;
   }
 
   toJSONAPI() {
