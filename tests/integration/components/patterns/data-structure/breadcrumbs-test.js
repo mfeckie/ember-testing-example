@@ -15,8 +15,8 @@ module(
     test('it renders with a data structure', async function (assert) {
       this.breadCrumbItems = [
         new BreadcrumbItem({ href: '/home', text: 'Home' }),
-        new Divider(),
         new BreadcrumbItem({ href: '/away', text: 'Away' }),
+        new BreadcrumbItem({ href: '/back-again', text: 'Back Again' }),
       ];
       await render(
         hbs`<Patterns::DataStructure::Breadcrumbs @breadCrumbItems={{this.breadCrumbItems}} />`
@@ -24,7 +24,7 @@ module(
 
       assert.dom('[data-href="/home"]').hasText('Home');
 
-      assert.dom('.divider').exists({ count: 1 });
+      assert.dom('.divider').exists({ count: 2 });
 
       assert.dom('[data-href="/away"]').hasText('Away');
     });

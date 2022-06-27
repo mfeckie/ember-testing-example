@@ -1,7 +1,7 @@
 {{#if (has-block)}}
   {{yield}}
 {{else}}
-  {{#each @breadCrumbItems as | bci |}}
+  {{#each this.withDividers as | bci |}}
     {{#if bci.divider}}
       <Patterns::DataStructure::Breadcrumbs::Divider />
     {{else}}
