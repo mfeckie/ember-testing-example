@@ -2,10 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'testing-examples/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import {
-  BreadcrumbItem,
-  Divider,
-} from 'testing-examples/components/patterns/data-structure/breadcrumbs';
+import { BreadcrumbItem } from 'testing-examples/components/patterns/data-structure/breadcrumbs';
 
 module(
   'Integration | Component | patterns/data-structure/breadcrumbs',

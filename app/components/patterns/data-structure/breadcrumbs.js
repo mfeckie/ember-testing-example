@@ -1,14 +1,14 @@
 import Component from '@glimmer/component';
 
 export class BreadcrumbItem {
-  constructor({href, text}) {
-    this.href = href
-    this.text = text
+  constructor({ href, text }) {
+    this.href = href;
+    this.text = text;
   }
 }
 
 export class Divider {
-  divider = true
+  divider = true;
 }
 
 export default class PatternsDataStructureBreadcrumbsComponent extends Component {
@@ -18,7 +18,7 @@ export default class PatternsDataStructureBreadcrumbsComponent extends Component
   get withDividers() {
     return this.args.breadCrumbItems.flatMap((item, index) => {
       if (index === this.lastItemIndex) return item;
-      return [item, new Divider()]
+      return [item, new Divider()];
     });
   }
 }

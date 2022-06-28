@@ -63,7 +63,7 @@ module('Integration | Component | book-list', function (hooks) {
     assert.dom('li').exists({ count: 2 });
   });
 
-  test('it shows a loading spinner when loading', async function (assert) {
+  test('it shows a error message', async function (assert) {
     this.getBooks = fakeTask(() => {
       return Promise.reject();
     });

@@ -1,6 +1,6 @@
 import { task } from 'ember-concurrency';
 
-export function fakeTask(callback = function (_any) {}) {
+export function fakeTask(callback = function () {}) {
   class FakeTask {
     @task
     async fakeTask() {
