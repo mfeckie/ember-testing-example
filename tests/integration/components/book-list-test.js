@@ -14,23 +14,23 @@ module('Integration | Component | book-list', function (hooks) {
   });
 
   test('it renders a list', async function (assert) {
-    this.books = fakeTask(() => [
+    this.getBooks = fakeTask(() => [
       { name: 'A Tale of Two Cities' },
       { name: 'Great Expectations' },
       { name: 'Oliver Twist' },
     ]);
 
-    this.books.perform();
+    this.getBooks.perform();
 
-    await render(hbs`<BookList @books={{this.books}} />`);
+    await render(hbs`<BookList @books={{this.getBooks}} />`);
 
     assert.dom('li').exists({ count: 3 });
   });
 
   test('it shows a loading spinner when loading', async function (assert) {
-    this.books = { isRunning: true };
+    this.getBooks = { isRunning: true };
 
-    await render(hbs`<BookList @books={{this.books}} />`);
+    await render(hbs`<BookList @books={{this.getBooks}} />`);
 
     assert.dom('div.loading').exists();
   });
@@ -38,7 +38,7 @@ module('Integration | Component | book-list', function (hooks) {
   test('Can model spinner and resolution with fakeTask', async function (assert) {
     let resolver;
 
-    this.books = fakeTask(() => {
+    this.getBooks = fakeTask(() => {
       // Return a Promise with a handle to the resolve function
       // so we can manually call it later.
       return new Promise((resolve) => {
@@ -46,9 +46,9 @@ module('Integration | Component | book-list', function (hooks) {
       });
     });
 
-    this.books.perform();
+    this.getBooks.perform();
 
-    await render(hbs`<BookList @books={{this.books}} />`);
+    await render(hbs`<BookList @books={{this.getBooks}} />`);
 
     assert.dom('div.loading').exists();
 
@@ -64,14 +64,14 @@ module('Integration | Component | book-list', function (hooks) {
   });
 
   test('it shows a loading spinner when loading', async function (assert) {
-    this.books = fakeTask(() => {
+    this.getBooks = fakeTask(() => {
       return Promise.reject();
     });
 
     // Catching error here because otherwise it causes a global failure in the test suite
-    this.books.perform().catch();
+    this.getBooks.perform().catch();
 
-    await render(hbs`<BookList @books={{this.books}} />`);
+    await render(hbs`<BookList @books={{this.getBooks}} />`);
 
     assert.dom('div.error').exists();
   });
